@@ -1,0 +1,31 @@
+{
+  "n_pairs": 50,
+  "llm_l1_flip_substantive_to_slogan": 11,
+  "llm_slogan_density_orig_mean": 0.161,
+  "llm_slogan_density_rewrite_mean": 0.398,
+  "llm_confsub_orig_mean": 0.948,
+  "llm_confsub_rewrite_mean": 0.741,
+  "method_rows": [
+    {
+      "method": "dict",
+      "mean_max_orig": 0.0202,
+      "mean_max_rew": 0.0268,
+      "absolute_drop": -0.0066,
+      "mean_retention": 1.548
+    },
+    {
+      "method": "raw",
+      "mean_max_orig": 0.7488,
+      "mean_max_rew": 0.6228,
+      "absolute_drop": 0.126,
+      "mean_retention": 0.747
+    },
+    {
+      "method": "calibrated",
+      "mean_max_orig": 0.5897,
+      "mean_max_rew": 0.4526,
+      "absolute_drop": 0.1371,
+      "mean_retention": 0.689
+    }
+  ]
+}

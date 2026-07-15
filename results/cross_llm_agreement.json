@@ -1,0 +1,26 @@
+{
+  "n_shared": 85,
+  "second_model": "qwen3.5:27b",
+  "kappa_l1": 0.746,
+  "kappa_l2": 0.51,
+  "per_dim_pearson_r": {
+    "innovation": 0.9,
+    "competition_cooperation": 0.816,
+    "organization_market": 0.921,
+    "social_responsibility": 0.929,
+    "national_mission": 0.844
+  },
+  "slogan_density_pearson_r": 0.729,
+  "confidence_substantive_pearson_r": 0.89,
+  "L1_distribution_9b": {
+    "substantive": 52,
+    "slogan": 28,
+    "irrelevant": 5
+  },
+  "L1_distribution_second": {
+    "slogan": 29,
+    "substantive": 45,
+    "irrelevant": 10,
+    "policy_history": 1
+  }
+}

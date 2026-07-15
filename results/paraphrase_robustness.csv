@@ -1,0 +1,4 @@
+metric,dict,raw_llm,calibrated
+pearson_r_orig_rewritten,0.7526625163024739,0.6243498184901278,0.6327405273554292
+l1_stability_fraction,,0.78,
+substantive_to_slogan_flip,,11,

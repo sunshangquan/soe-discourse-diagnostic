@@ -1,0 +1,27 @@
+分析下面这段中国国企领导讲话片段。仅输出 JSON。
+
+五个维度：
+{dim_descriptions}
+
+判定 l1：
+- slogan：抽象口号 / 政治表态 / 领导人引文 / 四字格 / 无具体主体-动词-数字-取舍。判别：可原封不动搬到任意国企讲话 → slogan
+- substantive：具体动词+客体 / 资源配置数字 / 可观测后果 / 对比取舍 / 时地特异性，满足 ≥2 项
+- irrelevant：寒暄、过渡、与 5 维度均无关
+
+l2（仅 substantive 填）：firm_action（本企业 leader 决策）/ policy_history（政策制度叙事）/ system_aggregate（系统聚合统计）
+
+输出严格 JSON：
+{
+  "l1": "slogan|substantive|irrelevant",
+  "l2": "",
+  "confidence_substantive": 0.0,
+  "stance_scores": {"innovation":0.0,"competition_cooperation":0.0,"organization_market":0.0,"social_responsibility":0.0,"national_mission":0.0},
+  "slogan_density": 0.0
+}
+
+confidence_substantive：是 substantive 的概率（0-1）
+stance_scores[dim]：假设这段是 substantive 时该维度的 stance 强度（0-1）。维度词出现 ≠ 高分，要看具体行动/数字/取舍
+slogan_density：套话密度（Xi 引文+四字格+抽象口号 占段比例，0-1）
+
+段落：
+{segment_text}

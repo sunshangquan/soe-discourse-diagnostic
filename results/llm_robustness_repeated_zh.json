@@ -1,0 +1,38 @@
+{
+  "mode": "repeated_zh",
+  "n_segments": 2190,
+  "n_valid": 2190,
+  "n_shared_with_main": 2190,
+  "parse_failures": 0,
+  "missing_or_failed": 0,
+  "l1_exact_agreement": 1.0,
+  "l1_cohen_kappa": 1.0,
+  "l2_cohen_kappa_mutually_substantive": 1.0,
+  "n_mutually_substantive": 1419,
+  "confidence_substantive_pearson_r": 1.0,
+  "slogan_density_pearson_r": 1.0,
+  "per_dim_pearson_r": {
+    "innovation": 1.0,
+    "competition_cooperation": 1.0,
+    "organization_market": 1.0,
+    "social_responsibility": 1.0,
+    "national_mission": 1.0
+  },
+  "mean_per_dim_pearson_r": 1.0,
+  "l1_distribution": {
+    "slogan": 760,
+    "substantive": 1419,
+    "irrelevant": 11
+  },
+  "paired_contrast": {
+    "n_leader_change": 24,
+    "n_same_leader": 5,
+    "D_lc": 0.148762,
+    "D_sl": 0.044058,
+    "Delta": 0.104704,
+    "cohen_d": 1.088,
+    "exact_p_2sided": 0.0858,
+    "exact_p_1sided": 0.0339,
+    "n_perm": 118755
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "n_shared": 89,
+  "second_model": "deepseek-r1:8b",
+  "kappa_l1": 0.695,
+  "raw_agreement_l1": 0.831,
+  "kappa_l2": 0.297,
+  "n_mutually_substantive_with_l2": 50,
+  "per_dim_pearson_r": {
+    "innovation": 0.846,
+    "competition_cooperation": 0.727,
+    "organization_market": 0.714,
+    "social_responsibility": 0.779,
+    "national_mission": 0.752
+  },
+  "per_dim_mean_r": 0.764,
+  "slogan_density_pearson_r": 0.719,
+  "confidence_substantive_pearson_r": 0.844,
+  "L1_distribution_9b": {
+    "substantive": 55,
+    "slogan": 29,
+    "irrelevant": 5
+  },
+  "L1_distribution_deepseek": {
+    "substantive": 53,
+    "slogan|substantive|irrelevant": 5,
+    "slogan": 20,
+    "irrelevant": 11
+  }
+}

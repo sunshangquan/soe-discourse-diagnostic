@@ -1,0 +1,49 @@
+{
+  "l1_eq_substantive_l2_dist": {
+    "firm_action": 811,
+    "": 11,
+    "system_aggregate": 405,
+    "policy_history": 192
+  },
+  "per_doc_l2_focus": {
+    "国务院国资委-郝鹏.txt": {
+      "system_aggregate": 5,
+      "firm_action": 6,
+      "policy_history": 3
+    },
+    "中国建材集团-宋志平-建材2.txt": {
+      "policy_history": 3,
+      "firm_action": 22,
+      "system_aggregate": 2
+    },
+    "中国航天科技集团有限公司-吴燕生-航天2.txt": {
+      "system_aggregate": 8,
+      "firm_action": 9
+    },
+    "中国节能环保集团有限公司-余红辉.txt": {
+      "firm_action": 14,
+      "system_aggregate": 5
+    },
+    "中国国新控股有限责任公司-周渝波-资本2.txt": {
+      "policy_history": 4,
+      "firm_action": 5
+    }
+  },
+  "paired_contrast_l2": {
+    "firm_action": {
+      "mean_lc": 0.20812196740281216,
+      "mean_sl": 0.06458249070953245,
+      "diff": 0.1435394766932797
+    },
+    "policy_history": {
+      "mean_lc": 0.11792794586323324,
+      "mean_sl": 0.06648381448373557,
+      "diff": 0.05144413137949767
+    },
+    "system_aggregate": {
+      "mean_lc": 0.14741979180462098,
+      "mean_sl": 0.08692595431607501,
+      "diff": 0.06049383748854596
+    }
+  }
+}

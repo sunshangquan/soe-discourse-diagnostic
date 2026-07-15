@@ -1,0 +1,38 @@
+{
+  "mode": "english_full",
+  "n_segments": 2190,
+  "n_valid": 2190,
+  "n_shared_with_main": 2190,
+  "parse_failures": 0,
+  "missing_or_failed": 0,
+  "l1_exact_agreement": 0.9283,
+  "l1_cohen_kappa": 0.844,
+  "l2_cohen_kappa_mutually_substantive": 0.244,
+  "n_mutually_substantive": 1339,
+  "confidence_substantive_pearson_r": 0.86,
+  "slogan_density_pearson_r": 0.858,
+  "per_dim_pearson_r": {
+    "innovation": 0.918,
+    "competition_cooperation": 0.824,
+    "organization_market": 0.842,
+    "social_responsibility": 0.855,
+    "national_mission": 0.765
+  },
+  "mean_per_dim_pearson_r": 0.841,
+  "l1_distribution": {
+    "slogan": 778,
+    "substantive": 1409,
+    "irrelevant": 3
+  },
+  "paired_contrast": {
+    "n_leader_change": 24,
+    "n_same_leader": 5,
+    "D_lc": 0.098336,
+    "D_sl": 0.030733,
+    "Delta": 0.067602,
+    "cohen_d": 0.923,
+    "exact_p_2sided": 0.1389,
+    "exact_p_1sided": 0.0635,
+    "n_perm": 118755
+  }
+}
