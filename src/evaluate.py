@@ -28,6 +28,7 @@ from collections import defaultdict
 from pathlib import Path
 
 from dimensions import DIM_KEYS
+from gold_labels import load_majority_l1
 from utils import DATA_DIR, RESULTS_DIR
 
 
@@ -141,10 +142,13 @@ def paired_contrast(method_doc_vecs: dict, leader_change, same_leader):
         return None
     mean_lc = sum(d_lc) / len(d_lc)
     mean_sl = sum(d_sl) / len(d_sl)
-    # pooled sd for Cohen-d-like effect size
+    # Standard sample-size-weighted pooled SD for Cohen's d.
     var_lc = sum((x - mean_lc) ** 2 for x in d_lc) / max(1, len(d_lc) - 1)
     var_sl = sum((x - mean_sl) ** 2 for x in d_sl) / max(1, len(d_sl) - 1)
-    pooled = math.sqrt((var_lc + var_sl) / 2)
+    pooled = math.sqrt(
+        ((len(d_lc) - 1) * var_lc + (len(d_sl) - 1) * var_sl)
+        / (len(d_lc) + len(d_sl) - 2)
+    )
     cohen_d = (mean_lc - mean_sl) / pooled if pooled > 0 else 0.0
     return {
         "n_leader_change": len(d_lc),
@@ -222,6 +226,10 @@ def gold_l1_f1(methods: dict, gold_rows: list[dict]):
 LLM_L1 = {}
 
 
+def load_gold_rows():
+    return load_majority_l1()
+
+
 def main():
     segs = load_segments()
     print(f"Loaded {len(segs)} segments")
@@ -258,7 +266,7 @@ def main():
                   f"diff={r['effect_diff']}, cohen_d={r['cohen_d']}")
 
     # ─── Channel 2 ───
-    gold = list(csv.DictReader((DATA_DIR / "gold.csv").open(encoding="utf-8")))
+    gold = load_gold_rows()
     print("\n# Channel 2: Gold L1 binary F1 (substantive vs slogan)")
     ch2 = gold_l1_f1(methods, gold)
     for name, r in ch2.items():

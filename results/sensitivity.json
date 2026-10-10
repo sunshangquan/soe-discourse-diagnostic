@@ -4,63 +4,63 @@
       {
         "dropped_pair": "中国机械工业集团有限公司-张晓仑.t↔中国机械工业集团有限公司-张晓仑2.",
         "n_sl_used": 4,
-        "cohen_d": 0.821,
+        "cohen_d": 0.642,
         "perm_p1": 0.1062
       },
       {
         "dropped_pair": "中国石油化工集团有限公司-马永生.t↔中国石油化工集团有限公司-马永生-石",
         "n_sl_used": 4,
-        "cohen_d": 0.728,
-        "perm_p1": 0.1418
+        "cohen_d": 0.565,
+        "perm_p1": 0.1552
       },
       {
         "dropped_pair": "中粮集团有限公司-于旭波.txt↔中粮集团有限公司-于旭波-粮食2.t",
         "n_sl_used": 4,
-        "cohen_d": 0.983,
-        "perm_p1": 0.0716
+        "cohen_d": 0.744,
+        "perm_p1": 0.071
       },
       {
         "dropped_pair": "国务院国资委-郝鹏.txt↔国务院国资委-郝鹏2.txt",
         "n_sl_used": 4,
-        "cohen_d": 0.768,
-        "perm_p1": 0.1168
+        "cohen_d": 0.601,
+        "perm_p1": 0.1222
       },
       {
         "dropped_pair": "国家能源投资集团有限责任公司-王祥喜↔国家能源投资集团有限责任公司-王祥喜",
         "n_sl_used": 4,
-        "cohen_d": 0.739,
-        "perm_p1": 0.1336
+        "cohen_d": 0.575,
+        "perm_p1": 0.1452
       }
     ],
     "lda": [
       {
         "dropped_pair": "中国机械工业集团有限公司-张晓仑.t↔中国机械工业集团有限公司-张晓仑2.",
         "n_sl_used": 4,
-        "cohen_d": 0.927,
+        "cohen_d": 0.697,
         "perm_p1": 0.0484
       },
       {
         "dropped_pair": "中国石油化工集团有限公司-马永生.t↔中国石油化工集团有限公司-马永生-石",
         "n_sl_used": 4,
-        "cohen_d": 0.082,
+        "cohen_d": 0.086,
         "perm_p1": 0.4573
       },
       {
         "dropped_pair": "中粮集团有限公司-于旭波.txt↔中粮集团有限公司-于旭波-粮食2.t",
         "n_sl_used": 4,
-        "cohen_d": 0.083,
-        "perm_p1": 0.4401
+        "cohen_d": 0.088,
+        "perm_p1": 0.4399
       },
       {
         "dropped_pair": "国务院国资委-郝鹏.txt↔国务院国资委-郝鹏2.txt",
         "n_sl_used": 4,
-        "cohen_d": 0.082,
-        "perm_p1": 0.4457
+        "cohen_d": 0.086,
+        "perm_p1": 0.4455
       },
       {
         "dropped_pair": "国家能源投资集团有限责任公司-王祥喜↔国家能源投资集团有限责任公司-王祥喜",
         "n_sl_used": 4,
-        "cohen_d": 0.082,
+        "cohen_d": 0.087,
         "perm_p1": 0.4465
       }
     ],
@@ -68,132 +68,132 @@
       {
         "dropped_pair": "中国机械工业集团有限公司-张晓仑.t↔中国机械工业集团有限公司-张晓仑2.",
         "n_sl_used": 4,
-        "cohen_d": 0.657,
-        "perm_p1": 0.1682
+        "cohen_d": 0.541,
+        "perm_p1": 0.1394
       },
       {
         "dropped_pair": "中国石油化工集团有限公司-马永生.t↔中国石油化工集团有限公司-马永生-石",
         "n_sl_used": 4,
-        "cohen_d": 0.579,
-        "perm_p1": 0.2356
+        "cohen_d": 0.474,
+        "perm_p1": 0.2188
       },
       {
         "dropped_pair": "中粮集团有限公司-于旭波.txt↔中粮集团有限公司-于旭波-粮食2.t",
         "n_sl_used": 4,
-        "cohen_d": 0.949,
-        "perm_p1": 0.0202
+        "cohen_d": 0.722,
+        "perm_p1": 0.0194
       },
       {
         "dropped_pair": "国务院国资委-郝鹏.txt↔国务院国资委-郝鹏2.txt",
         "n_sl_used": 4,
-        "cohen_d": 0.557,
-        "perm_p1": 0.2597
+        "cohen_d": 0.454,
+        "perm_p1": 0.2454
       },
       {
         "dropped_pair": "国家能源投资集团有限责任公司-王祥喜↔国家能源投资集团有限责任公司-王祥喜",
         "n_sl_used": 4,
-        "cohen_d": 0.554,
-        "perm_p1": 0.2621
+        "cohen_d": 0.451,
+        "perm_p1": 0.2492
       }
     ],
     "llm": [
       {
         "dropped_pair": "中国机械工业集团有限公司-张晓仑.t↔中国机械工业集团有限公司-张晓仑2.",
         "n_sl_used": 4,
-        "cohen_d": 1.252,
-        "perm_p1": 0.0244
+        "cohen_d": 0.971,
+        "perm_p1": 0.0242
       },
       {
         "dropped_pair": "中国石油化工集团有限公司-马永生.t↔中国石油化工集团有限公司-马永生-石",
         "n_sl_used": 4,
-        "cohen_d": 1.03,
-        "perm_p1": 0.0598
+        "cohen_d": 0.82,
+        "perm_p1": 0.0616
       },
       {
         "dropped_pair": "中粮集团有限公司-于旭波.txt↔中粮集团有限公司-于旭波-粮食2.t",
         "n_sl_used": 4,
-        "cohen_d": 1.183,
-        "perm_p1": 0.0394
+        "cohen_d": 0.932,
+        "perm_p1": 0.0376
       },
       {
         "dropped_pair": "国务院国资委-郝鹏.txt↔国务院国资委-郝鹏2.txt",
         "n_sl_used": 4,
-        "cohen_d": 0.996,
-        "perm_p1": 0.069
+        "cohen_d": 0.787,
+        "perm_p1": 0.0716
       },
       {
         "dropped_pair": "国家能源投资集团有限责任公司-王祥喜↔国家能源投资集团有限责任公司-王祥喜",
         "n_sl_used": 4,
-        "cohen_d": 0.985,
-        "perm_p1": 0.0714
+        "cohen_d": 0.774,
+        "perm_p1": 0.0756
       }
     ],
     "calibrated": [
       {
         "dropped_pair": "中国机械工业集团有限公司-张晓仑.t↔中国机械工业集团有限公司-张晓仑2.",
         "n_sl_used": 4,
-        "cohen_d": 0.944,
-        "perm_p1": 0.0286
+        "cohen_d": 0.722,
+        "perm_p1": 0.028
       },
       {
         "dropped_pair": "中国石油化工集团有限公司-马永生.t↔中国石油化工集团有限公司-马永生-石",
         "n_sl_used": 4,
-        "cohen_d": 0.795,
-        "perm_p1": 0.0788
+        "cohen_d": 0.616,
+        "perm_p1": 0.078
       },
       {
         "dropped_pair": "中粮集团有限公司-于旭波.txt↔中粮集团有限公司-于旭波-粮食2.t",
         "n_sl_used": 4,
-        "cohen_d": 0.909,
-        "perm_p1": 0.0402
+        "cohen_d": 0.7,
+        "perm_p1": 0.0392
       },
       {
         "dropped_pair": "国务院国资委-郝鹏.txt↔国务院国资委-郝鹏2.txt",
         "n_sl_used": 4,
-        "cohen_d": 0.765,
-        "perm_p1": 0.0914
+        "cohen_d": 0.59,
+        "perm_p1": 0.0936
       },
       {
         "dropped_pair": "国家能源投资集团有限责任公司-王祥喜↔国家能源投资集团有限责任公司-王祥喜",
         "n_sl_used": 4,
-        "cohen_d": 0.761,
-        "perm_p1": 0.1004
+        "cohen_d": 0.586,
+        "perm_p1": 0.103
       }
     ]
   },
   "placebo": {
     "dict": {
-      "obs_cohen_d": 0.807,
+      "obs_cohen_d": 0.636,
       "obs_diff": 0.0983,
-      "placebo_pct_d_ge_obs": 0.074,
+      "placebo_pct_d_ge_obs": 0.081,
       "placebo_pct_diff_ge_obs": 0.081,
       "n_trials": 2000
     },
     "lda": {
-      "obs_cohen_d": 0.2,
+      "obs_cohen_d": 0.201,
       "obs_diff": 0.065,
       "placebo_pct_d_ge_obs": 0.357,
       "placebo_pct_diff_ge_obs": 0.357,
       "n_trials": 2000
     },
     "bge": {
-      "obs_cohen_d": 0.654,
+      "obs_cohen_d": 0.536,
       "obs_diff": 0.0007,
-      "placebo_pct_d_ge_obs": 0.144,
+      "placebo_pct_d_ge_obs": 0.131,
       "placebo_pct_diff_ge_obs": 0.131,
       "n_trials": 2000
     },
     "llm": {
-      "obs_cohen_d": 1.088,
+      "obs_cohen_d": 0.871,
       "obs_diff": 0.1047,
-      "placebo_pct_d_ge_obs": 0.039,
+      "placebo_pct_d_ge_obs": 0.042,
       "placebo_pct_diff_ge_obs": 0.042,
       "n_trials": 2000
     },
     "calibrated": {
-      "obs_cohen_d": 0.835,
+      "obs_cohen_d": 0.654,
       "obs_diff": 0.1299,
-      "placebo_pct_d_ge_obs": 0.035,
+      "placebo_pct_d_ge_obs": 0.036,
       "placebo_pct_diff_ge_obs": 0.036,
       "n_trials": 2000
     }
@@ -203,36 +203,36 @@
       "mean_d_lc": 0.8223,
       "mean_d_sl": 0.5278,
       "diff": 0.2945,
-      "cohen_d": 0.512,
-      "perm_p1": 0.1591
+      "cohen_d": 0.494,
+      "perm_p1": 0.1574
     },
     "lda": {
       "mean_d_lc": 0.3153,
       "mean_d_sl": 0.1847,
       "diff": 0.1306,
-      "cohen_d": 0.35,
-      "perm_p1": 0.2554
+      "cohen_d": 0.319,
+      "perm_p1": 0.2597
     },
     "bge": {
       "mean_d_lc": 0.4784,
       "mean_d_sl": 0.2513,
       "diff": 0.2271,
-      "cohen_d": 0.708,
-      "perm_p1": 0.1227
+      "cohen_d": 0.572,
+      "perm_p1": 0.1256
     },
     "llm": {
       "mean_d_lc": 0.7109,
       "mean_d_sl": 0.4947,
       "diff": 0.2161,
-      "cohen_d": 0.433,
-      "perm_p1": 0.2175
+      "cohen_d": 0.408,
+      "perm_p1": 0.2127
     },
     "calibrated": {
       "mean_d_lc": 0.699,
       "mean_d_sl": 0.5061,
       "diff": 0.1929,
-      "cohen_d": 0.394,
-      "perm_p1": 0.2264
+      "cohen_d": 0.371,
+      "perm_p1": 0.2259
     }
   }
 }

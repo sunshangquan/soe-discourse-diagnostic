@@ -15,13 +15,13 @@
 
 | Control | Delta | Cohen d | exact p1 | Interpretation |
 |---|---:|---:|---:|---|
-| tfidf_doc_vector | 0.235438 | 1.186 | 0.0039 | Generic lexical document vector; bounds non-LLM speaker/topic signal. |
-| tfidf_sanitized_names_years | 0.237981 | 1.193 | 0.0039 | TF-IDF after removing company/person names and years. |
-| tfidf_sanitized_names_years_numbers | 0.239165 | 1.200 | 0.0038 | TF-IDF after removing names, years, Arabic numerals, and alphanumeric tokens. |
-| tfidf_sanitized_plus_slogan_terms | 0.238901 | 1.197 | 0.0039 | TF-IDF after also removing a conservative political-slogan term list. |
-| doc2vec_doc_vector_seed_summary | 0.162965 | 0.916 | 0.0207 | Doc2Vec over 5 seeds; Delta mean/range=0.163/[0.156,0.175], d mean/range=0.916/[0.852,1.017], p1 mean/range=0.0207/[0.0127,0.0271]. |
-| dict_on_llm_substantive_conditional | 0.140769 | 0.857 | 0.0042 | Conditional profile: old dictionary averaged only over LLM-substantive segments. |
-| dict_on_llm_substantive_mass | 0.140769 | 0.857 | 0.0042 | Document-level mass: non-substantive segments set to zero before document averaging. |
+| tfidf_doc_vector | 0.235438 | 1.790 | 0.0039 | Generic lexical document vector; bounds non-LLM speaker/topic signal. |
+| tfidf_sanitized_names_years | 0.237981 | 1.807 | 0.0039 | TF-IDF after removing company/person names and years. |
+| tfidf_sanitized_names_years_numbers | 0.239165 | 1.808 | 0.0038 | TF-IDF after removing names, years, Arabic numerals, and alphanumeric tokens. |
+| tfidf_sanitized_plus_slogan_terms | 0.238901 | 1.803 | 0.0039 | TF-IDF after also removing a conservative political-slogan term list. |
+| doc2vec_doc_vector_seed_summary | 0.162965 | 0.983 | 0.0207 | Doc2Vec over 5 seeds; Delta mean/range=0.163/[0.156,0.175], d mean/range=0.983/[0.921,1.053], p1 mean/range=0.0207/[0.0127,0.0271]. |
+| dict_on_llm_substantive_conditional | 0.140769 | 0.657 | 0.0042 | Conditional profile: old dictionary averaged only over LLM-substantive segments. |
+| dict_on_llm_substantive_mass | 0.140769 | 0.657 | 0.0042 | Document-level mass: non-substantive segments set to zero before document averaging. |
 
 Interpretation: these controls strengthen the reviewer's caution. Raw TF-IDF is stronger than the LLM paired contrast, and the contrast remains after removing firm/person names, years, numbers, and a conservative political-slogan term list. Therefore the LC-vs-SL paired contrast alone cannot validate stance recovery; it is a diagnostic that reveals construct-validity risk from generic lexical/speaker/time/style signal.
 
@@ -29,19 +29,20 @@ Interpretation: these controls strengthen the reviewer's caution. Raw TF-IDF is 
 
 | Variant | Delta | Cohen d |
 |---|---:|---:|
-| raw | 0.1047 | 1.09 |
-| x conf_sub only | 0.1331 | 0.86 |
-| x (1-sd_llm) only | 0.1013 | 1.03 |
-| x (1-2*sd_ng) only | 0.1045 | 1.09 |
-| x (1-sd_llm) x (1-2*sd_ng) | 0.1011 | 1.03 |
-| all (default) | 0.1299 | 0.83 |
+| raw | 0.1047 | 0.871 |
+| x conf_sub only | 0.1331 | 0.669 |
+| x (1-sd_llm) only | 0.1013 | 0.838 |
+| x (1-2*sd_ng) only | 0.1045 | 0.874 |
+| x conf_sub x (1-sd_llm) | 0.1300 | 0.654 |
+| x (1-sd_llm) x (1-2*sd_ng) | 0.1011 | 0.840 |
+| all (default) | 0.1299 | 0.654 |
 
-Lambda grid: d ranges from 0.788 to 0.860; Delta ranges from 0.1243 to 0.1331. Best grid d=0.860 at lambda_llm=0.0, lambda_ngram=3.0; default full calibration d=0.835. This shows the grid landscape is flat and the chosen full formula should not be presented as an optimized estimator.
+Lambda grid: standard pooled-SD d ranges from 0.625 to 0.670; Delta ranges from 0.1243 to 0.1331. The flat landscape shows that the full formula should not be presented as an optimized estimator.
 
 ## Robustness and stability
 
 * Balanced 5-vs-5 sensitivity check (overlapping subsets, not independent replications): raw LLM median d=1.040, Delta>0 in 98.7%; calibrated median d=0.931, Delta>0 in 98.2%.
-* Style residualization: raw LLM d=0.433, p=0.2175; calibrated d=0.394, p=0.2264. This supports reframing the abstract around a diagnostic/negative result rather than a positive stance-recovery claim.
+* Style residualization: raw LLM d=0.408, p=0.213; calibrated d=0.371, p=0.226. This supports reframing the abstract around a diagnostic/negative result rather than a positive stance-recovery claim.
 * Cross-model subset: qwen3.5:27b vs 9b on 85 shared segments gives L1 kappa=0.746, mean per-dimension Pearson r=0.882, confidence_substantive r=0.89.
 * Cross-family subset: deepseek-r1:8b vs 9b on 89 shared segments gives L1 kappa=0.695, mean per-dimension r=0.764, confidence_substantive r=0.844.
 * Paraphrase stress test: 50 self-generated rewrites; L1 stability 0.78; because rewrites are model-generated, this should be described only as a stress test.

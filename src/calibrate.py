@@ -11,8 +11,8 @@ Calibrated score per (segment, dim):
                 × (1 − λ_ngram · slogan_density_ngram)
                 × confidence_substantive
 
-`λ_llm` and `λ_ngram` are grid-searched on the gold set; here we default to
-λ_llm=1.0 (full subtraction), λ_ngram=2.0 (heavy weight since lexicon is small).
+The reported defaults are λ_llm=1.0 and λ_ngram=2.0. The grid is an
+exploratory sensitivity analysis, not selection on the pilot gold labels.
 
 Output:
   results/scores_calibrated.csv  (final scores)
@@ -23,8 +23,6 @@ import csv
 import argparse
 from pathlib import Path
 from collections import defaultdict
-
-import jieba
 
 from dimensions import DIM_KEYS
 from utils import DATA_DIR, RESULTS_DIR, PHASE0_DIR

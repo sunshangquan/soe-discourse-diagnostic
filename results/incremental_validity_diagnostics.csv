@@ -1,0 +1,4 @@
+model,pearson_r_style_y,pearson_r_tfidf_y,r_squared,standardized_beta_style,standardized_beta_tfidf
+tfidf,,0.611166,0.373524,,0.611166
+style,0.225410,,0.050810,0.225410,
+tfidf_and_style,0.225410,0.611166,0.385833,0.113019,0.589623

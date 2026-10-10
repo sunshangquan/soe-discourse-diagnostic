@@ -1,15 +1,16 @@
 {
   "ablation_calibration_components": [
-    {"variant": "raw",                          "D_lc": 0.1488, "D_sl": 0.0441, "diff": 0.1047, "cohen_d": 1.09},
-    {"variant": "x conf_sub only",              "D_lc": 0.1781, "D_sl": 0.0451, "diff": 0.1331, "cohen_d": 0.86},
-    {"variant": "x (1-sd_llm) only",            "D_lc": 0.1506, "D_sl": 0.0493, "diff": 0.1013, "cohen_d": 1.03},
-    {"variant": "x (1-2*sd_ng) only",           "D_lc": 0.1484, "D_sl": 0.0439, "diff": 0.1045, "cohen_d": 1.09},
-    {"variant": "x (1-sd_llm) x (1-2*sd_ng)",   "D_lc": 0.1503, "D_sl": 0.0492, "diff": 0.1011, "cohen_d": 1.03},
-    {"variant": "all (default)",                "D_lc": 0.1790, "D_sl": 0.0490, "diff": 0.1299, "cohen_d": 0.83}
+    {"variant": "raw",                          "D_lc": 0.1488, "D_sl": 0.0441, "diff": 0.1047, "cohen_d": 0.871},
+    {"variant": "x conf_sub only",              "D_lc": 0.1781, "D_sl": 0.0451, "diff": 0.1331, "cohen_d": 0.669},
+    {"variant": "x (1-sd_llm) only",            "D_lc": 0.1506, "D_sl": 0.0493, "diff": 0.1013, "cohen_d": 0.838},
+    {"variant": "x (1-2*sd_ng) only",           "D_lc": 0.1484, "D_sl": 0.0439, "diff": 0.1045, "cohen_d": 0.874},
+    {"variant": "x conf_sub x (1-sd_llm)",      "D_lc": 0.1791, "D_sl": 0.0491, "diff": 0.1300, "cohen_d": 0.654},
+    {"variant": "x (1-sd_llm) x (1-2*sd_ng)",   "D_lc": 0.1503, "D_sl": 0.0492, "diff": 0.1011, "cohen_d": 0.840},
+    {"variant": "all (default)",                "D_lc": 0.1790, "D_sl": 0.0490, "diff": 0.1299, "cohen_d": 0.654}
   ],
   "notes": [
     "Default lambda: llm=1.0, ngram=2.0",
-    "confidence_substantive multiplier drives most of the absolute diff increase (+27%)",
+    "confidence_substantive multiplier drives the absolute diff increase; the full default is +24.1% over raw",
     "slogan_density components (LLM-reported or n-gram) alone have negligible effect on Cohen d",
     "Trade-off: stance amplification raises within-group variance, dropping Cohen d while increasing absolute discriminative power"
   ]

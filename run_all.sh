@@ -65,9 +65,25 @@ python3 "$SRC/calibrate.py"
 
 echo "=== Evaluation ==="
 python3 "$SRC/evaluate.py"
+python3 "$SRC/pr_auc_eval.py"
+python3 "$SRC/stats_addon.py"
+python3 "$SRC/permutation_test.py"
+
+echo "=== Offline Stage-2 and covariate checks ==="
+if python3 -c "import jieba, gensim, sklearn" 2>/dev/null; then
+    python3 "$SRC/incremental_validity.py"
+    python3 "$SRC/covariate_sensitivity.py"
+else
+    echo "  skip controls (install requirements.txt for jieba/gensim/sklearn)"
+fi
+
+echo "=== Release integrity tests ==="
+python3 -m unittest discover -s tests -v
 
 echo ""
 echo "Done. Inspect:"
 echo "  results/eval_summary.md       — main results table"
+echo "  results/permutation_test.csv  — exact Stage-1 tests"
+echo "  results/incremental_validity.md — Stage-2 residualisation"
 echo "  results/scores_*.csv          — per-method per-segment scores"
 echo "  data/llm_cache.jsonl          — raw LLM responses (if real run)"

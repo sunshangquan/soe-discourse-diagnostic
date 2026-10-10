@@ -13,12 +13,14 @@ from pathlib import Path
 
 from dimensions import DIM_KEYS
 from utils import DATA_DIR, RESULTS_DIR, PHASE0_DIR
+from gold_labels import load_majority_l1
 
 random.seed(42)
 
 
 def load_all():
-    segs = list(csv.DictReader((DATA_DIR / "segments.csv").open(encoding="utf-8")))
+    with (DATA_DIR / "segments.csv").open(encoding="utf-8", newline="") as source:
+        segs = list(csv.DictReader(source))
     seg_meta = {s["seg_id"]: s for s in segs}
 
     methods = {}
@@ -34,23 +36,25 @@ def load_all():
         if not p.exists():
             continue
         m = {}
-        for r in csv.DictReader(p.open(encoding="utf-8")):
-            scores = {}
-            for dk in DIM_KEYS:
-                key = f"raw_{dk}" if col_pat == "raw_" else f"{dk}{col_pat}"
-                if key in r:
-                    scores[dk] = float(r[key])
-            if scores:
-                m[r["seg_id"]] = scores
+        with p.open(encoding="utf-8", newline="") as source:
+            for r in csv.DictReader(source):
+                scores = {}
+                for dk in DIM_KEYS:
+                    key = f"raw_{dk}" if col_pat == "raw_" else f"{dk}{col_pat}"
+                    if key in r:
+                        scores[dk] = float(r[key])
+                if scores:
+                    m[r["seg_id"]] = scores
         methods[name] = m
 
     llm_l1 = {}
     p = RESULTS_DIR / "scores_llm.csv"
     if p.exists():
-        for r in csv.DictReader(p.open(encoding="utf-8")):
-            llm_l1[r["seg_id"]] = r["l1"]
+        with p.open(encoding="utf-8", newline="") as source:
+            for r in csv.DictReader(source):
+                llm_l1[r["seg_id"]] = r["l1"]
 
-    gold = list(csv.DictReader((DATA_DIR / "gold.csv").open(encoding="utf-8")))
+    gold = load_majority_l1()
     return seg_meta, methods, llm_l1, gold
 
 
@@ -121,7 +125,10 @@ def cohen_d(d_lc, d_sl):
     m_sl = sum(d_sl) / len(d_sl)
     var_lc = sum((x - m_lc) ** 2 for x in d_lc) / max(1, len(d_lc) - 1)
     var_sl = sum((x - m_sl) ** 2 for x in d_sl) / max(1, len(d_sl) - 1)
-    pooled = math.sqrt((var_lc + var_sl) / 2)
+    df = len(d_lc) + len(d_sl) - 2
+    pooled = math.sqrt(
+        ((len(d_lc) - 1) * var_lc + (len(d_sl) - 1) * var_sl) / df
+    ) if df > 0 else 0.0
     return (m_lc - m_sl) / pooled if pooled > 0 else 0.0
 
 

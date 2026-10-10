@@ -5,7 +5,7 @@ pair labels {LC, SL} can be re-shuffled freely.  For each shuffle we
 recompute the test statistic (mean LC distance - mean SL distance) and
 get the proportion of shuffles where |stat_shuffled| >= |stat_observed|.
 
-This yields an exact-ish p-value that does not assume normality and is
+This yields an exact p-value that does not assume normality and is
 robust to the small n_SL = 5.
 
 We also report Hedges' g (small-sample-corrected) alongside Cohen's d.
@@ -28,17 +28,23 @@ N_PERM = 200000  # > C(29,5)=118755 so exact enumeration applies
 
 
 def hedges_g(d_lc, d_sl):
-    """Cohen's d with Hedges' small-sample bias correction."""
+    """Small-sample-corrected effect using sample-size-weighted pooled SD."""
     if not d_lc or not d_sl:
         return 0.0
     n1, n2 = len(d_lc), len(d_sl)
-    d = cohen_d(d_lc, d_sl)
-    # Hedges correction factor J = 1 - 3/(4*(n1+n2)-9)
     df = n1 + n2 - 2
     if df < 1:
-        return d
+        return 0.0
+    m1 = sum(d_lc) / n1
+    m2 = sum(d_sl) / n2
+    pooled_sd = math.sqrt(
+        (sum((value - m1) ** 2 for value in d_lc)
+         + sum((value - m2) ** 2 for value in d_sl)) / df
+    )
+    if pooled_sd == 0:
+        return 0.0
     J = 1 - 3 / (4 * df - 1)
-    return d * J
+    return ((m1 - m2) / pooled_sd) * J
 
 
 def glass_delta(d_lc, d_sl):
@@ -130,7 +136,7 @@ def main():
 
     out = RESULTS_DIR / "permutation_test.csv"
     with out.open("w", encoding="utf-8", newline="") as f:
-        w = csv.DictWriter(f, fieldnames=list(rows[0].keys()))
+        w = csv.DictWriter(f, fieldnames=list(rows[0].keys()), lineterminator="\n")
         w.writeheader()
         w.writerows(rows)
     print(f"\nWrote {out}")

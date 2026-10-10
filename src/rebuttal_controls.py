@@ -74,7 +74,10 @@ def paired_contrast_dense(doc_vecs: dict[str, list[float]], leader_change, same_
     mean_sl = sum(d_sl) / len(d_sl)
     var_lc = sum((x - mean_lc) ** 2 for x in d_lc) / max(1, len(d_lc) - 1)
     var_sl = sum((x - mean_sl) ** 2 for x in d_sl) / max(1, len(d_sl) - 1)
-    pooled = math.sqrt((var_lc + var_sl) / 2)
+    df = len(d_lc) + len(d_sl) - 2
+    pooled = math.sqrt(
+        ((len(d_lc) - 1) * var_lc + (len(d_sl) - 1) * var_sl) / df
+    ) if df > 0 else 0.0
     return {
         "n_leader_change": len(d_lc),
         "n_same_leader": len(d_sl),
@@ -104,7 +107,10 @@ def paired_contrast_sparse(doc_vecs: dict[str, dict[str, float]], leader_change,
     mean_sl = sum(d_sl) / len(d_sl)
     var_lc = sum((x - mean_lc) ** 2 for x in d_lc) / max(1, len(d_lc) - 1)
     var_sl = sum((x - mean_sl) ** 2 for x in d_sl) / max(1, len(d_sl) - 1)
-    pooled = math.sqrt((var_lc + var_sl) / 2)
+    df = len(d_lc) + len(d_sl) - 2
+    pooled = math.sqrt(
+        ((len(d_lc) - 1) * var_lc + (len(d_sl) - 1) * var_sl) / df
+    ) if df > 0 else 0.0
     return {
         "n_leader_change": len(d_lc),
         "n_same_leader": len(d_sl),
@@ -402,7 +408,7 @@ def main():
 
     out_csv = RESULTS_DIR / "rebuttal_controls.csv"
     with out_csv.open("w", encoding="utf-8", newline="") as f:
-        writer = csv.DictWriter(f, fieldnames=list(rows[0]))
+        writer = csv.DictWriter(f, fieldnames=list(rows[0]), lineterminator="\n")
         writer.writeheader()
         writer.writerows(rows)
 

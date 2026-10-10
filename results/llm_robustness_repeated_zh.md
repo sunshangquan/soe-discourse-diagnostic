@@ -19,7 +19,7 @@ LC-vs-SL paired contrast:
 - D_lc: 0.148762
 - D_sl: 0.044058
 - Delta: 0.104704
-- Cohen d: 1.088
+- Cohen d: 0.871
 - exact one-sided p: 0.0339
 
 L1 distribution:

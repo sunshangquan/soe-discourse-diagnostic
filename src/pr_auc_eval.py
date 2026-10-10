@@ -15,6 +15,7 @@ Output: results/pr_auc.csv
 from __future__ import annotations
 import csv
 import json
+from itertools import groupby
 from pathlib import Path
 
 from dimensions import DIM_KEYS
@@ -43,24 +44,20 @@ def rank_auc(scores, labels):
 
 
 def pr_auc(scores, labels):
-    """Compute average precision (PR-AUC)."""
+    """Compute average precision at distinct score thresholds."""
     pairs = sorted(zip(scores, labels), key=lambda x: -x[0])
     tp = 0
-    fp = 0
+    seen = 0
     ap = 0.0
     pos_total = sum(labels)
     if pos_total == 0:
         return 0.0
-    last_recall = 0.0
-    for score, lbl in pairs:
-        if lbl == 1:
-            tp += 1
-        else:
-            fp += 1
-        precision = tp / (tp + fp)
-        recall = tp / pos_total
-        ap += precision * (recall - last_recall)
-        last_recall = recall
+    for _, group in groupby(pairs, key=lambda pair: pair[0]):
+        labels_at_score = [label for _, label in group]
+        tp_at_score = sum(labels_at_score)
+        tp += tp_at_score
+        seen += len(labels_at_score)
+        ap += (tp / seen) * (tp_at_score / pos_total)
     return ap
 
 
@@ -115,7 +112,7 @@ def main():
 
     out = RESULTS_DIR / "pr_auc.csv"
     with out.open("w", encoding="utf-8", newline="") as f:
-        w = csv.DictWriter(f, fieldnames=list(rows[0].keys()))
+        w = csv.DictWriter(f, fieldnames=list(rows[0].keys()), lineterminator="\n")
         w.writeheader()
         w.writerows(rows)
 
