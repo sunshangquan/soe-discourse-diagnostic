@@ -12,6 +12,23 @@ sys.path.insert(0, str(ROOT / "src"))
 
 
 class ReleaseInputsTest(unittest.TestCase):
+    def test_expert_labels_cover_all_documents(self):
+        from stats_addon import load_all
+
+        segments, _, _, _ = load_all()
+        expected = {segment["doc_id"] for segment in segments.values()}
+        with (ROOT / "data" / "expert_labels.csv").open(encoding="utf-8", newline="") as source:
+            rows = list(csv.DictReader(source))
+        self.assertEqual(800, len(rows))
+        dimensions = {"innovation", "competition_cooperation", "organisation_market",
+                      "social_responsibility", "national_mission"}
+        for expert in ("1", "2"):
+            for dimension in dimensions:
+                group = [row for row in rows if row["expert"] == expert and row["dimension"] == dimension]
+                self.assertEqual(80, len(group))
+                self.assertEqual(expected, {row["doc_id"] for row in group})
+                self.assertTrue(all(row["judgement"] in {"明确立场", "仅涉及", "未涉及"} for row in group))
+
     def test_legacy_pair_groups_use_names_not_succession(self):
         from evaluate import find_pairs
 
