@@ -25,6 +25,7 @@ The study examines how discourse-measurement instruments respond to recurrent sl
 - `data/expert_labels.csv`: two experts' independent judgments and evidence on all 80 speeches. Public figures and organisations may be identifiable from the speeches and excerpts; expert identities are excluded.
 - `data/expert_instructions_zh.md` and `data/expert_comparison_protocol.md`: expert guidelines and comparison protocol.
 - `src/expert_full_eval.py`: evaluation of all five saved methods against each expert, including a reference aggregation check.
+- `results/tfidf_dimension_baseline.csv` and `src/tfidf_dimension_baseline.py`: exploratory full-corpus TF-IDF-to-dimension-description baseline; its vectorizer is fitted on the unlabelled evaluation segments and anchors.
 - `src/dimensions.py`: the exact implemented dictionary seeds (10 terms for each of five dimensions).
 - `prompts/stance_extraction.txt`: Chinese prompt template for segment-level extraction.
 
@@ -63,6 +64,9 @@ Optional robustness/control scripts:
 ```bash
 # Full-corpus expert comparison, requires scikit-learn from requirements.txt
 python3 src/expert_full_eval.py
+
+# Exploratory anchor baseline, writes a separate recomputed file
+python3 src/tfidf_dimension_baseline.py
 
 # Slower: trains TF-IDF/Doc2Vec controls and rewrites results/rebuttal_controls.*
 python3 src/rebuttal_controls.py
