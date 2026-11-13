@@ -2,7 +2,9 @@
 
 This repository contains the code, prompts, derived data, model outputs, and evaluation summaries for a diagnostic study of entrepreneurial-discourse extraction in Chinese state-owned enterprise (SOE) leadership speeches.
 
-The central question is whether common discourse-measurement instruments recover leader-level substantive stance or instead capture recurrent slogans, lexical variation, speaker style, and institutional discourse templates.
+The study examines how discourse-measurement instruments respond to recurrent slogans, lexical variation, speaker style, and institutional discourse templates.
+
+**Pair-label correction:** The legacy names `leader_change` and `same_leader` in scripts and saved results describe a filename-based grouping, not verified leadership succession. `leader_change` includes pairs with different recorded names and pairs with a missing name; `same_leader` requires identical nonempty recorded names. Some different-name speakers held offices concurrently. The original grouping and saved results are retained for reproducibility; they cannot establish the effect of a leadership transition.
 
 ## Contents
 
@@ -20,6 +22,9 @@ The central question is whether common discourse-measurement instruments recover
 - `results/covariate_sensitivity.md`: sensitivity to excluding the SASAC regulator pair.
 - `results/llm_robustness_*.md`: deterministic repeated-run and English-prompt robustness checks.
 - `results/three_annotator_l1_report.md`: multi-annotator agreement summary for the pilot label set.
+- `data/expert_labels.csv`: two experts' independent judgments and evidence on all 80 speeches. Public figures and organisations may be identifiable from the speeches and excerpts; expert identities are excluded.
+- `data/expert_instructions_zh.md` and `data/expert_comparison_protocol.md`: expert guidelines and comparison protocol.
+- `src/expert_full_eval.py`: evaluation of all five saved methods against each expert, including a reference aggregation check.
 - `src/dimensions.py`: the exact implemented dictionary seeds (10 terms for each of five dimensions).
 - `prompts/stance_extraction.txt`: Chinese prompt template for segment-level extraction.
 
@@ -56,6 +61,9 @@ python3 src/score_llm.py --provider ollama --model qwen3.5:9b --resume
 Optional robustness/control scripts:
 
 ```bash
+# Full-corpus expert comparison, requires scikit-learn from requirements.txt
+python3 src/expert_full_eval.py
+
 # Slower: trains TF-IDF/Doc2Vec controls and rewrites results/rebuttal_controls.*
 python3 src/rebuttal_controls.py
 python3 src/incremental_validity.py
@@ -99,11 +107,11 @@ Control results:
 - LOPO LLM residualised on TF-IDF and style: `Delta=-0.035`, `d=-0.308`, `p=0.737`
 - Excluding the SASAC SL pair: LLM `d=0.787`, `p=0.075`; TF-IDF `d=1.680`, `p=0.0127`
 
-These controls support the paper's diagnostic claim: passing the leader-change contrast is not sufficient to validate stance recovery, because generic lexical/document variation can also pass the diagnostic.
+The generic lexical control also shows a difference between these filename-defined groups. This comparison alone does not validate stance recovery.
 
 ## Notes on Raw Sources
 
-The repository ships derived segment-level data and model outputs used for evaluation. Public source speeches were released by SASAC or SOE websites as part of the SOE Open Lecture initiative. Source URLs and release documentation should be checked against the final paper or accompanying artifact notes.
+The repository ships derived segment-level data and model outputs used for evaluation. The transcripts are attributed to the SOE Open Lecture initiative. Individual transcript provenance and redistribution permissions remain to be verified; public availability is not itself a redistribution licence.
 
 If raw `.txt` speeches are available locally, place them under:
 

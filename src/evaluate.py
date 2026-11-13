@@ -2,8 +2,9 @@
 
   Channel 1 — Paired contrast:
       For each method's doc-level dimension vector, compute mean cosine distance
-      between (a) leader-change pairs and (b) same-leader pairs.
-      A stance-detecting method should yield D_leader_change > D_same_leader.
+      between (a) different-or-missing recorded names and (b) the same
+      nonempty recorded name. Legacy output names call these groups
+      leader-change and same-leader; they do not establish succession.
       Report effect size = D_diff − D_same and bootstrap CI.
 
   Channel 2 — Gold segment F1:
@@ -100,7 +101,7 @@ def cosine_distance(v1: dict, v2: dict) -> float:
 
 
 def find_pairs(segs):
-    """Return (leader_change_pairs, same_leader_pairs) as lists of (doc_id_A, doc_id_B)."""
+    """Return legacy groups by recorded name; missing names enter the first group."""
     doc_meta = {}
     for s in segs.values():
         if s["doc_id"] not in doc_meta:

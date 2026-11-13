@@ -12,6 +12,23 @@ sys.path.insert(0, str(ROOT / "src"))
 
 
 class ReleaseInputsTest(unittest.TestCase):
+    def test_legacy_pair_groups_use_names_not_succession(self):
+        from evaluate import find_pairs
+
+        def segment(doc_id, company, speaker, wave):
+            return {"doc_id": doc_id, "company_norm": company,
+                    "speaker": speaker, "wave": wave}
+
+        segments = {
+            "a": segment("a", "one", "", "A"),
+            "b": segment("b", "one", "Speaker B", "B"),
+            "c": segment("c", "two", "Speaker C", "A"),
+            "d": segment("d", "two", "Speaker C", "B"),
+        }
+        different_or_missing, same_name = find_pairs(segments)
+        self.assertEqual([("a", "b")], different_or_missing)
+        self.assertEqual([("c", "d")], same_name)
+
     def test_average_precision_groups_tied_scores(self):
         from pr_auc_eval import pr_auc
 
